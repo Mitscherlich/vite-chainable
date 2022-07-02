@@ -1,0 +1,40 @@
+{
+  "name": "vite-chainable",
+  "version": "0.0.0",
+  "description": "A chaining API to generate and simplify the modification of vite configurations",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs"
+  },
+  "types": "./index.d.ts",
+  "scripts": {
+    "build-fast": "tsup src/index.js --format cjs,esm",
+    "build": "pnpm run build-fast -- --dts-resolve",
+    "test": "vitest run",
+    "release": "bumpp package.json --commit --push --tag && pnpm publish --access public",
+    "prepublishOnly": "pnpm run build",
+    "example:dev": "vite example/ -c vite.config.js",
+    "example:build": "vite build example/ -c vite.config.js"
+  },
+  "devDependencies": {
+    "@m9ch/eslint-config-all": "^0.2.3",
+    "bumpp": "8.2.1",
+    "eslint": "^8.15.0",
+    "tsup": "6.1.2",
+    "typescript": "4.7.4",
+    "vite": "2.9.13",
+    "vitest": "0.16.0"
+  },
+  "dependencies": {
+    "deepmerge": "^4.2.2"
+  }
+}
