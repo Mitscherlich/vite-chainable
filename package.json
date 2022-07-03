@@ -25,6 +25,10 @@
     "example:dev": "vite example/ -c vite.config.js",
     "example:build": "vite build example/ -c vite.config.js"
   },
+  "dependencies": {
+    "deepmerge": "^4.2.2",
+    "javascript-stringify": "^2.1.0"
+  },
   "devDependencies": {
     "@m9ch/eslint-config-all": "^0.2.3",
     "bumpp": "8.2.1",
@@ -33,8 +37,5 @@
     "typescript": "4.7.4",
     "vite": "2.9.13",
     "vitest": "0.16.0"
-  },
-  "dependencies": {
-    "deepmerge": "^4.2.2"
   }
 }
