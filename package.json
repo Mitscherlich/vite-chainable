@@ -15,7 +15,7 @@
     "require": "./dist/index.js",
     "import": "./dist/index.mjs"
   },
-  "types": "./index.d.ts",
+  "types": "./types/index.d.ts",
   "scripts": {
     "build-fast": "tsup src/index.js --format cjs,esm",
     "build": "pnpm run build-fast -- --dts-resolve",
@@ -33,6 +33,7 @@
     "@m9ch/eslint-config-all": "^0.2.3",
     "bumpp": "8.2.1",
     "eslint": "^8.15.0",
+    "postcss": "^8.4.14",
     "tsup": "6.1.2",
     "typescript": "4.7.4",
     "vite": "2.9.13",
