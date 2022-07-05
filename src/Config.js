@@ -1,9 +1,8 @@
 import { stringify } from 'javascript-stringify'
 import { Build } from './Build'
 import { ChainedMap } from './ChainedMap'
-// import { ChainedSet } from './ChainedSet'
+import { ChainedSet } from './ChainedSet'
 import { CSS } from './CSS'
-// import { ESBuild } from './ESBuild'
 import { JSON } from './JSON'
 import { OptimizeDeps } from './OptimizeDeps'
 import { Plugin } from './Plugin'
@@ -20,7 +19,7 @@ export class Config extends ChainedMap {
     this.resolve = new Resolve(this)
     this.css = new CSS(this)
     this.json = new JSON(this)
-    // this.esbuild = new ESBuild(this)
+    this.assetsInclude = new ChainedSet(this)
     this.server = new Server(this)
     this.build = new Build(this)
     this.preview = new Preview(this)
@@ -31,15 +30,14 @@ export class Config extends ChainedMap {
       'root',
       'base',
       'mode',
-      'appType',
       'publicDir',
       'cacheDir',
-      'assetsInclude',
-      'envDir',
-      'envPrefix',
+      'esbuild',
       'logLevel',
       'clearScreen',
-      'esbuild',
+      'envDir',
+      'envPrefix',
+      'appType',
     ])
   }
 
@@ -91,7 +89,7 @@ export class Config extends ChainedMap {
         resolve: this.resolve.toConfig(),
         css: this.css.toConfig(),
         json: this.json.toConfig(),
-        // esbuild: this.esbuild.toConfig(),
+        esbuild: this.esbuild.toConfig(),
         server: this.server.toConfig(),
         build: this.build.toConfig(),
         preview: this.preview.toConfig(),
@@ -134,6 +132,6 @@ export class Config extends ChainedMap {
         this[key].merge(obj[key])
     })
 
-    return super.merge(obj, [...omit, ...omissions, 'plugins'])
+    return super.merge(obj, [...omit, ...omissions, 'plugin'])
   }
 }

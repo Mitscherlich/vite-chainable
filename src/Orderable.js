@@ -1,11 +1,9 @@
-export const makeOrderable = (Ctor) => {
-  return class extends Ctor {
+export const makeOrderable = (Class) => {
+  return class extends Class {
     before(name) {
       if (this.__after) {
         throw new Error(
-          `Unable to set .before(${JSON.stringify(
-            name,
-          )}) with existing value for .after()`,
+          `Unable to set .before(${JSON.stringify(name)}) with existing value for .after()`,
         )
       }
 
@@ -16,9 +14,7 @@ export const makeOrderable = (Ctor) => {
     after(name) {
       if (this.__before) {
         throw new Error(
-          `Unable to set .after(${JSON.stringify(
-            name,
-          )}) with existing value for .before()`,
+          `Unable to set .after(${JSON.stringify(name)}) with existing value for .before()`,
         )
       }
 
