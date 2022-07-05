@@ -1,6 +1,6 @@
 {
   "name": "vite-chainable",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A chaining API to generate and simplify the modification of vite configurations",
   "license": "MIT",
   "publishConfig": {
